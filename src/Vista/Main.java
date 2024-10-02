@@ -1,20 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package Vista;
 
-/**
- *
- * @author Emanuel
- */
+import Modelo.Conexion;
+import org.mariadb.jdbc.Connection;
+
+
+
+
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
+   
     public static void main(String[] args) {
-        // TODO code application logic here
+        Conexion conexion = new Conexion();
+        Connection conn = (Connection) conexion.getConnection();
+
+        // Aquí puedes realizar operaciones en la base de datos utilizando 'conn'
+
+        // No olvides cerrar la conexión al final
+        conexion.cerrarConexion();
+       
+        
+        
     }
     
 }

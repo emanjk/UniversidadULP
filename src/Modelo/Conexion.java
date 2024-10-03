@@ -1,49 +1,66 @@
 
 package Modelo;
-import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.Connection;
 import java.sql.Statement ;
 import java.sql.ResultSet ;
 
-public class Conexion {
-    
-    private static final String URL = "jdbc:mariadb://localhost:3306/universidadulp"; // Cambia por el nombre de tu base de datos
-    private static final String USER = "root"; // Cambia por tu usuario
-    private static final String PASSWORD = ""; // Cambia por tu contraseña
-    private Connection connection;
+import java.sql.PreparedStatement ;
 
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
+public class Conexion { 
+     // Atributo para la conexión
+     private Connection conexion;
+
+     
+     
+    //Constructor, cargamos Driver y Conexion
+    
     public Conexion() {
         try {
-            // Cargar el driver de MariaDB
-            Class.forName("org.mariadb.jdbc.Driver");
+            //(1) Cargamos el Driver 
             
-            // Establecer la conexión
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            Class.forName("org.mariadb.jdbc.Driver"); //agregamos el paquete a nuestro proyecto.
+           
+            //(2) Conexion a nuestra base de datos
             
-            System.out.println("Conexión exitosa a la base de datos.");
-        } catch (SQLException e) {
-            System.err.println("Error de SQL: " + e.getMessage());
-        } catch (ClassNotFoundException e) {
-            System.err.println("Driver no encontrado: " + e.getMessage());
+             conexion = DriverManager.getConnection("jdbc:mariadb://localhost:3306/universidadulp", "root","");           
+            
+          /*  //(3 )Agregamos un 'empleado'
+            String sql = "INSERT INTO empleado (dni,apellido,nombre,acceso, estado)"
+                    + "VALUES (42762255, 'Collea', 'Patricio',1, true )";
+            
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            int registros = ps.executeUpdate();
+            System.out.println(registros);
+         */  
+            
+            
+        } catch (ClassNotFoundException ex) {
+            
+           JOptionPane.showMessageDialog(null, "Error al cargar Driver"+ ex.getMessage());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de Conexion"+ ex.getMessage());
         }
+     
+    }   
+    
+    // Método para obtener la conexión
+    public Connection getConexion() {
+        return conexion;
     }
-
-    public Connection getConnection() {
-        return connection;
-    }
-
-    public void cerrarConexion() {
-        if (connection != null) {
-            try {
-                connection.close();
-                System.out.println("Conexión cerrada.");
-            } catch (SQLException e) {
-                System.err.println("Error al cerrar la conexión: " + e.getMessage());
-            }
-        }
-    }
+    
+    
 }
+
+    
+    
+    
+
+    
+
 
 
 

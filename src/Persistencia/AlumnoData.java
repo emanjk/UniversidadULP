@@ -8,8 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
-import java.sql.Date;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
@@ -50,7 +48,7 @@ public class AlumnoData {
         System.out.println("Alumno guardado con éxito");
         
     } catch (SQLException ex) {
-        ex.printStackTrace();  // Esto imprimirá la traza del error en la consola
+        ex.printStackTrace();  /*me impre con mas deetalles la excepetion*/
         JOptionPane.showMessageDialog(null, "Error al guardar el alumno: " + ex.getMessage());
     }
            

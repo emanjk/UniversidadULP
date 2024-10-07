@@ -5,7 +5,6 @@ import Entidades.Alumno;
 import Persistencia.AlumnoData;
 import Persistencia.Conexion;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet ; 
 import java.time.LocalDate;
@@ -13,7 +12,7 @@ import java.time.Month;
 import java.util.Date;
 import java.util.List;
 
-
+import javax.swing.JOptionPane;
 
 
 public class Main {

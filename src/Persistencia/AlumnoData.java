@@ -37,8 +37,8 @@ public class AlumnoData {
         PreparedStatement ps = con.prepareStatement(sql);
 
         //obtenemos los datos de la bd
-        ps.setInt(1, alumno.getDni());
-        ps.setString(2, alumno.getApellido());
+        ps.setInt(1, alumno.getDni()); /*en bd getDNI esta en int*/
+        ps.setString(2, alumno.getApellido()); 
         ps.setString(3, alumno.getNombre());   
         // Convertir java.sql.Date a LocalDate
         ps.setDate(4, java.sql.Date.valueOf(alumno.getFechaNacimiento())); // Aquí es donde se realiza la conversión

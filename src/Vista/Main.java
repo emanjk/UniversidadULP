@@ -25,7 +25,7 @@ public class Main {
     public Main() {
         // Inicializa la conexión y el objeto de datos del alumno
         conexion = new Conexion("jdbc:mariadb://localhost:3306/universidadulp", "root", "");
-        alumnoData = new AlumnoData(conexion);
+        alumnoData = new AlumnoData(conexion); // alumnoDate vinculada a la BD 'universidadulp'
     }
     
     
@@ -60,6 +60,11 @@ public class Main {
     }
     
    
+    
+    
+    
+    
+    
     //(1)Metodo: guardar un alumno
     public void conectar (Alumno alumno){
         

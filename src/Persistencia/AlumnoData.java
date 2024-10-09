@@ -1,9 +1,9 @@
 
 package Persistencia;
 import Entidades.Alumno;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.Connection; /*Conexion a bd 'universidadulp*/
+import java.sql.PreparedStatement; /*guarda codigo SQL*/
+import java.sql.ResultSet; /*obtener datos o registro de un alumno*/
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,8 +25,7 @@ public class AlumnoData {
     public AlumnoData(Conexion conexion) {   
         this.con = conexion.buscarConexion();           
     }
-    
-    
+       
                          //metodos para el alumno:
     
     // (1) Guardar 1 alumno
@@ -34,7 +33,7 @@ public class AlumnoData {
         String sql = "INSERT INTO alumno (dni, apellido, nombre, fechaNacimiento, estado) VALUES (?, ?, ?, ?, ?)";
 
     try {
-        PreparedStatement ps = con.prepareStatement(sql);
+        PreparedStatement ps = con.prepareStatement(sql); /*tiene la conexion a la bd 'universidadulp y la consulta SQL*/
 
         //obtenemos los datos de la bd
         ps.setInt(1, alumno.getDni()); /*en bd getDNI esta en int*/
@@ -93,4 +92,45 @@ public class AlumnoData {
     
     
     }
+    
+    
+    //(3) Buscar 1 alumno por dni
+    public Alumno buscarAlumnoPorDNI(int dni) {
+        Alumno alumno = null;  // Inicializamos el objeto Alumno como null
+        String sql = "SELECT * FROM alumno WHERE dni = ?";
+    
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, dni);  // Asignamos el parámetro ID
+
+        ResultSet resultSet = ps.executeQuery();  // Ejecutamos la consulta
+
+        // Si se encuentra un alumno con el ID dado
+        if (resultSet.next()) {
+            java.sql.Date sqlDate = resultSet.getDate("fechaNacimiento"); // Obtener java.sql.Date
+            LocalDate fechaNacimiento = sqlDate.toLocalDate(); // Convertir a LocalDate
+
+            alumno = new Alumno(
+                resultSet.getInt("dni"),
+                resultSet.getString("apellido"),
+                resultSet.getString("nombre"),
+                fechaNacimiento, // Usar LocalDate
+                resultSet.getBoolean("estado")
+            );
+            
+            alumno.setIdAlumno(resultSet.getInt("id_Alumno"));
+        } else {
+            System.out.println("No se encontró ningún alumno con ID: " + dni);
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al obtener el alumno: " + ex.getMessage());
+    }
+    
+    return alumno;  // Devuelve el alumno encontrado o null si no existe
+    
+    
+    
+    }
+    
+    
 }

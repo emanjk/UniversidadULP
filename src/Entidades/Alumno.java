@@ -14,15 +14,9 @@ public class Alumno {
     private LocalDate fechaNacimiento ; //parsea DATETIME
     private boolean   estado ; //paresea TINYINT
 
-
-    //constructor con id
-    public Alumno(int idAlumno, int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
-        this.idAlumno = idAlumno;
-        this.dni = dni;
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.fechaNacimiento = fechaNacimiento;
-        this.estado = estado;
+    //Constructor vacio
+    public Alumno() {
+        
     }
 
     //constructor sin id
@@ -34,6 +28,15 @@ public class Alumno {
         this.estado = estado;
     }
     
+     //constructor con id
+    public Alumno(int idAlumno, int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean estado) {
+        this.idAlumno = idAlumno;
+        this.dni = dni;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.fechaNacimiento = fechaNacimiento;
+        this.estado = estado;
+    }
     
     
 

@@ -51,6 +51,19 @@ public class Conexion {
     
     }
     
+    // Método para cerrar la conexión
+    public void cerrarConexion() {
+        if (conexion != null) {
+            try {
+                conexion.close();
+                conexion = null; // reiniciar la conexión a null
+                System.out.println("Conexión cerrada exitosamente.");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + ex.getMessage());
+            }
+        }
+    }
+    
     
 }
 

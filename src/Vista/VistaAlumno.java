@@ -10,15 +10,18 @@ import java.sql.PreparedStatement; /*guarda codigo SQL*/
 import java.sql.ResultSet; /*obtener datos o registro de un alumno*/
 
 
-public class GestionAlumno extends javax.swing.JInternalFrame {
-    private AlumnoData alumnoData; // Variable para manejar los datos del alumno
-    private Conexion conexion ; // Variable para manejar la conexión a la base de datos
+public class VistaAlumno extends javax.swing.JInternalFrame {
+    //(1)PRIMERO:
+    private AlumnoData alumnoData; // Variable para hacer: consultas, inserciones o actualizar en la BDS.
+    private Conexion conexion ; // Variable conexión necesaria para interactuar con la base de datos MariaDB.
    
-    public GestionAlumno() {
+    public VistaAlumno() {
         initComponents();
-        // Inicializa la conexión y el objeto de datos del alumno
-        conexion = new Conexion("jdbc:mariadb://localhost:3306/universidadulp", "root", "");
-        alumnoData = new AlumnoData(conexion); // alumnoDate vinculada a la BD 'universidadulp'
+        //(2)SEGUNDO:
+        conexion = new Conexion("jdbc:mariadb://localhost:3306/universidadulp", "root", "");//nueva instancia y con argumentos:(URL de conexión a la base de datos, usuario de la base de datos,contraseña)
+        alumnoData = new AlumnoData(conexion); //Una vez que la conexion a la BDS esta configurada, se crea una instancia de la clase AlumnoData y se le pasa el objeto conexion.
+        /*Esto permite que la instancia de AlumnoData utilice la conexión
+        para realizar operaciones en la base de datos.*/
     }
 
    

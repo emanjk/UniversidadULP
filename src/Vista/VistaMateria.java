@@ -1,10 +1,10 @@
 package Vista;
 
 
-public class GestionMateria extends javax.swing.JInternalFrame {
+public class VistaMateria extends javax.swing.JInternalFrame {
 
    
-    public GestionMateria() {
+    public VistaMateria() {
         initComponents();
     }
 
@@ -115,7 +115,7 @@ public class GestionMateria extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jRadioButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)

@@ -2,10 +2,10 @@
 package Vista;
 
 
-public class Menu extends javax.swing.JFrame {
+public class MenuPrincipal extends javax.swing.JFrame {
 
    
-    public Menu() {
+    public MenuPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null) ;
     }
@@ -56,7 +56,7 @@ public class Menu extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 596, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,7 +137,7 @@ public class Menu extends javax.swing.JFrame {
     private void jmMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmMateriaActionPerformed
       escritorio.removeAll();
       escritorio.repaint();
-      GestionMateria gestionM = new GestionMateria();
+      VistaMateria gestionM = new VistaMateria();
       gestionM.setVisible(true);
       escritorio.add(gestionM);
       escritorio.moveToFront(gestionM);
@@ -147,7 +147,7 @@ public class Menu extends javax.swing.JFrame {
     private void jmiAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAlumnoActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        GestionAlumno gestionA = new GestionAlumno();
+        VistaAlumno gestionA = new VistaAlumno();
         gestionA.setVisible(true);
         escritorio.add(gestionA);
         escritorio.moveToFront(gestionA);
@@ -174,21 +174,23 @@ public class Menu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new MenuPrincipal().setVisible(true);
             }
         });
     }

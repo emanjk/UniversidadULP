@@ -5,9 +5,11 @@ import java.sql.Connection; //2. Conexion a bd 'universidadulp
 import java.sql.PreparedStatement; //3. 'Declaracion preparada', permite ejecutar consultas SQL
 import java.sql.ResultSet; //4. Contiene o Guarda los resultados de la consulta SQL ejecutada por PreparedStatement o Statement
 import java.sql.SQLException; // 5. Clase para manejar errores relacionados a operaciones con SQL.
+import java.sql.Date;
 
 import java.util.ArrayList;
 import java.time.LocalDate;
+
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -45,8 +47,10 @@ public class AlumnoData {
         ps.executeUpdate();
         System.out.println("Alumno guardado con éxito");
         
-    } catch (SQLException ex) {
-        ex.printStackTrace();  /*me impre con mas deetalles la excepetion*/
+    }
+    
+    catch (SQLException ex) {
+        ex.printStackTrace();  /*me impreme con mas deetalles la excepetion*/
         JOptionPane.showMessageDialog(null, "Error al guardar el alumno: " + ex.getMessage());
     }
            
@@ -166,29 +170,31 @@ public class AlumnoData {
     
     //(5) Modificar Alumno
     public void modificarAlumno(Alumno alumno){
-        String sql = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?, fechaNacimiento = ?, estado = ? WHERE id_Alumno = ?";
+       String sql = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?, fechaNacimiento = ?, estado = ? WHERE dni = ?";
+        PreparedStatement ps = null;
 
-    try {
-        PreparedStatement ps = con.prepareStatement(sql); // Preparar la consulta
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, alumno.getDni());
+            ps.setString(2, alumno.getApellido());
+            ps.setString(3, alumno.getNombre());
+            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento())); // Asegúrate de que fechaNacimiento no sea nula
+            ps.setBoolean(5, alumno.isEstado());
+            ps.setInt(6, alumno.getIdAlumno());
 
-        // Establecer los valores del PreparedStatement
-        ps.setInt(1, alumno.getDni()); // DNI
-        ps.setString(2, alumno.getApellido()); // Apellido
-        ps.setString(3, alumno.getNombre()); // Nombre
-        ps.setDate(4, java.sql.Date.valueOf(alumno.getFechaNacimiento())); // Fecha de nacimiento
-        ps.setBoolean(5, alumno.isEstado()); // Estado
-        ps.setInt(6, alumno.getIdAlumno()); // ID del alumno a modificar
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Modificado exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "El alumno no existe.");
+            }
 
-        int filasAfectadas = ps.executeUpdate(); // Ejecutar la actualización
-        if (filasAfectadas > 0) {
-            System.out.println("Alumno modificado con éxito");
-        } else {
-            System.out.println("No se encontró el alumno con ID: " + alumno.getIdAlumno());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno: " + ex.getMessage());
         }
+    
 
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al modificar el alumno: " + ex.getMessage());
-    }
+
     }
     
     //(6)Eliminar Alumno por id

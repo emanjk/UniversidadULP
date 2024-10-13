@@ -47,7 +47,7 @@ public class Materia {
         return anioMateria;
     }
 
-    public boolean isActivo() {
+    public boolean getEstado() {
         return activo;
     }
     

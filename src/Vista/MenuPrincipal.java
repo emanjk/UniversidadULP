@@ -33,7 +33,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jmNotas = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jmAlumnosMateria = new javax.swing.JMenuItem();
-        jMenu10 = new javax.swing.JMenu();
+        salir = new javax.swing.JMenu();
         jmSalir = new javax.swing.JMenuItem();
 
         jMenu4.setText("jMenu4");
@@ -104,12 +104,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar2.add(jMenu9);
 
-        jMenu10.setText("Salir");
+        salir.setText("Salir");
 
-        jmSalir.setText("jMenuItem2");
-        jMenu10.add(jmSalir);
+        jmSalir.setText("Salir");
+        jmSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSalirActionPerformed(evt);
+            }
+        });
+        salir.add(jmSalir);
 
-        jMenuBar2.add(jMenu10);
+        jMenuBar2.add(salir);
 
         setJMenuBar(jMenuBar2);
 
@@ -152,6 +157,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.add(gestionA);
         escritorio.moveToFront(gestionA);
     }//GEN-LAST:event_jmiAlumnoActionPerformed
+
+    private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_jmSalirActionPerformed
 
     
     
@@ -198,7 +207,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -216,5 +224,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmNotas;
     private javax.swing.JMenuItem jmSalir;
     private javax.swing.JMenuItem jmiAlumno;
+    private javax.swing.JMenu salir;
     // End of variables declaration//GEN-END:variables
 }

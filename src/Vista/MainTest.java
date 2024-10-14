@@ -37,7 +37,7 @@ public class MainTest {
     MainTest main = new MainTest(); 
         
 
-    System.out.println("     **** TESTEAMOS LAS MATERIAS ****    ");
+    System.out.println("     **** TESTEAMOS LOS ALUMNOS ****    ");
     System.out.println("\n");
 
     try {

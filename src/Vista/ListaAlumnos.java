@@ -1,14 +1,14 @@
 
 package Vista;
-import Entidades.Alumno;
+import Modelo.Alumno;
 /*AlumnoDate y Conexion*/
 import Persistencia.AlumnoData;
-import Persistencia.Conexion;
+import Modelo.Conexion;
 /*importamos las clases de la API JDBC*/
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import Persistencia.Conexion;
+import Modelo.Conexion;
 
 
 

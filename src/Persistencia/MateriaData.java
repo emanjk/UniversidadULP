@@ -1,6 +1,7 @@
 
 package Persistencia;
-import Entidades.Materia ; //1. importamos la clase 'Materia'.
+import Modelo.Conexion;
+import Modelo.Materia ; //1. importamos la clase 'Materia'.
 
 // paquetes para JDBC para interactuar con la BDS.
 import java.sql.Connection ;  // 2. importamos la clase 'Connection' para hacer la conexion a la bd 'universidadulp'.
@@ -79,12 +80,7 @@ public class MateriaData {
     }
 
     return materia;
-    
-    
-        
-        
-        
-    
+  
     }   
     
     //(3) Buscar materia por nombre (Agregado)
@@ -186,4 +182,44 @@ public class MateriaData {
     }
 
     
+    //(7) Alta logica
+    public void altaLogica(Materia materia) throws SQLException {
+        String sql = "UPDATE materia SET estado = ? WHERE id_Materia = ?"; // El campo correcto es id_Materia
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setBoolean(1, true); // Estado 'true' indica alta lógica
+            ps.setInt(2, materia.getIdMateria());
+
+            int filasActualizadas = ps.executeUpdate();
+            if (filasActualizadas > 0) {
+                System.out.println("La materia ha sido dada de alta lógicamente.");
+            } else {
+                System.out.println("No se encontró la materia.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al dar de alta la materia: " + e.getMessage());
+        }
+}
+    
+    
+    //(8) Baja logica
+    public void bajaLogica(Materia materia) throws SQLException {
+        String sql = "UPDATE materia SET estado = ? WHERE id_Materia = ?"; // El campo correcto es id_Materia
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setBoolean(1, false); // Estado 'false' indica baja lógica
+            ps.setInt(2, materia.getIdMateria());
+
+            int filasActualizadas = ps.executeUpdate();
+            if (filasActualizadas > 0) {
+                System.out.println("La materia ha sido dada de baja lógicamente.");
+            } else {
+                System.out.println("No se encontró la materia.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al dar de baja la materia: " + e.getMessage());
+        }
+    }
 }

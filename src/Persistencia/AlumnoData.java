@@ -1,6 +1,7 @@
 
 package Persistencia;
-import Entidades.Alumno; // 1. Importamos la clase Alumno
+import Modelo.Conexion;
+import Modelo.Alumno; // 1. Importamos la clase Alumno
 import java.sql.Connection; //2. Conexion a bd 'universidadulp
 import java.sql.PreparedStatement; //3. 'Declaracion preparada', permite ejecutar consultas SQL
 import java.sql.ResultSet; //4. Contiene o Guarda los resultados de la consulta SQL ejecutada por PreparedStatement o Statement
@@ -41,7 +42,7 @@ public class AlumnoData {
         ps.setString(2, alumno.getApellido()); 
         ps.setString(3, alumno.getNombre());   
         // Convertir java.sql.Date a LocalDate
-        ps.setDate(4, java.sql.Date.valueOf(alumno.getFechaNacimiento())); // Aquí es donde se realiza la conversión
+        ps.setDate(4, java.sql.Date.valueOf(alumno.getFechaNacimiento())); 
         ps.setBoolean(5, alumno.isEstado());
 
         ps.executeUpdate();
@@ -49,10 +50,10 @@ public class AlumnoData {
         
     }
     
-    catch (SQLException ex) {
-        ex.printStackTrace();  /*me impreme con mas deetalles la excepetion*/
-        JOptionPane.showMessageDialog(null, "Error al guardar el alumno: " + ex.getMessage());
-    }
+        catch (SQLException ex) {
+            ex.printStackTrace();  
+            JOptionPane.showMessageDialog(null, "Error al guardar el alumno: " + ex.getMessage());
+        }
            
     }
     
@@ -69,7 +70,7 @@ public class AlumnoData {
 
         // Si se encuentra un alumno con el ID dado
         if (resultSet.next()) {
-            java.sql.Date sqlDate = resultSet.getDate("fechaNacimiento"); // Obtener java.sql.Date
+            java.sql.Date sqlDate = resultSet.getDate("fechaNacimiento"); 
             LocalDate fechaNacimiento = sqlDate.toLocalDate(); // Convertir a LocalDate
 
             alumno = new Alumno(
@@ -88,10 +89,7 @@ public class AlumnoData {
         JOptionPane.showMessageDialog(null, "Error al obtener el alumno: " + ex.getMessage());
     }
     
-    return alumno;  // Devuelve el alumno encontrado o null si no existe
-    
-    
-    
+    return alumno;  // Devuelve el alumno encontrado o null si no existe 
     }
       
     //(3) Buscar Alumno por DNI
@@ -127,9 +125,6 @@ public class AlumnoData {
     }
     
     return alumno;  // Devuelve el alumno encontrado o null si no existe
-    
-    
-    
     }
     
     //(4) Listar todos los alumnos
@@ -216,4 +211,52 @@ public class AlumnoData {
         JOptionPane.showMessageDialog(null, "Error al eliminar el alumno: " + ex.getMessage());
     }
     }
+    
+    // (7 )Alta Logica
+   public void altaLogica(Alumno alumno) throws SQLException{
+       
+      String sql =  "UPDATE alumno SET estado=? WHERE id_Alumno = ?" ;
+      try (PreparedStatement ps = con.prepareStatement(sql)) {
+      
+            ps.setBoolean(1, true);  // Establece el estado como falso (baja lógica)
+            ps.setInt(2, alumno.getIdAlumno()); // Establece el ID del alumno en el segundo parámetro
+
+            // Ejecutar la actualización!
+            ps.executeUpdate();
+            System.out.println("Alumno dado de baja correctamente.");
+            
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new SQLException("Error al dar de baja el alumno.", ex);
+    }
+      
+   
+   }
+   
+    // (8) Baja Logica
+   public void bajaLogica(Alumno alumno) throws SQLException{
+      
+       String sql = "UPDATE alumno SET estado=? WHERE id_Alumno = ? ";
+       
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+      
+            ps.setBoolean(1, false);  // Establece el estado como falso (baja lógica)
+            ps.setInt(2, alumno.getIdAlumno()); // Establece el ID del alumno en el segundo parámetro
+
+            // Ejecutar la actualización!
+            ps.executeUpdate();
+            System.out.println("Alumno dado de baja correctamente.");
+            
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new SQLException("Error al dar de baja el alumno.", ex);
+    }
+        
+        
+    
+   }
+
+
+
+
 }

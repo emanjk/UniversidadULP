@@ -1,5 +1,5 @@
 
-package Entidades;
+package Modelo;
 
 
 public class Inscripcion {

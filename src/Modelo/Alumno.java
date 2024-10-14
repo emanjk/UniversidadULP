@@ -1,5 +1,5 @@
 
-package Entidades;
+package Modelo;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -93,12 +93,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "id_Alumno: "+ idAlumno + 
-                " DNI: "+dni+" Apellid: "+
-                apellido+ " Nombre: "+
-                nombre+ "Fecha de nacimiento: "+
-                fechaNacimiento+ " Estado: "+
-                estado ;
+        return "id_Alumno: "+ idAlumno +"\n DNI: "+ dni+ " \nApellido: "+ apellido+" \nNombre: "+nombre+ " \nFecha de nacimiento: " +fechaNacimiento + " \nEstado: "+ estado ;
     }
     
     

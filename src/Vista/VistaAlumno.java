@@ -2,9 +2,9 @@
 package Vista;
 
 /*importamos las clases:*/
-import Entidades.Alumno;
+import Modelo.Alumno;
 import Persistencia.AlumnoData;
-import Persistencia.Conexion;
+import Modelo.Conexion;
 /*importamos las clases de la API JDBC: */
 import java.sql.SQLException;
 import java.sql.PreparedStatement; /*guarda codigo SQL*/

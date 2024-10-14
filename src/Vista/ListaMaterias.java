@@ -1,14 +1,14 @@
 
 package Vista;
-import Entidades.Materia;
+import Modelo.Materia;
 /*materiaData y Conexion*/
 import  Persistencia.MateriaData;
-import Persistencia.Conexion;
+import Modelo.Conexion;
 /*Importamos las clases de la API de JDBC*/
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import Persistencia.Conexion;
+import Modelo.Conexion;
 
 
 

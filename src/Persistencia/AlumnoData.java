@@ -127,10 +127,10 @@ public class AlumnoData {
     return alumno;  // Devuelve el alumno encontrado o null si no existe
     }
     
-    //(4) Listar todos los alumnos
+    //(4) Listar todos los alumnos (los estados: ACTIVO)
     public List<Alumno> listarAlumnos(){
-        List<Alumno> alumnos = new ArrayList<>(); // Crear lista vacía de alumnos
-        String sql = "SELECT * FROM alumno"; // Consulta SQL para obtener todos los alumnos
+        List<Alumno> alumnos = new ArrayList<>(); 
+        String sql = "SELECT * FROM alumno "; 
 
         try {
             PreparedStatement ps = con.prepareStatement(sql); // Preparar la consulta
@@ -138,7 +138,7 @@ public class AlumnoData {
 
             // Recorrer los resultados
             while (resultSet.next()) {
-                // Obtener los datos de cada alumno en la tabla
+               
                 int idAlumno = resultSet.getInt("id_Alumno");
                 int dni = resultSet.getInt("dni");
                 String apellido = resultSet.getString("apellido");
@@ -147,9 +147,9 @@ public class AlumnoData {
                 LocalDate fechaNacimiento = sqlDate.toLocalDate(); // Convertir java.sql.Date a LocalDate
                 boolean estado = resultSet.getBoolean("estado");
 
-                // Crear un nuevo objeto Alumno con los datos obtenidos
+                
                 Alumno alumno = new Alumno(dni, apellido, nombre, fechaNacimiento, estado);
-                alumno.setIdAlumno(idAlumno); // Establecer el ID del alumno
+                alumno.setIdAlumno(idAlumno); 
 
                 // Agregar el alumno a la lista
                 alumnos.add(alumno);

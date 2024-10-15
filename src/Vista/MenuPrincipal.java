@@ -193,7 +193,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jmNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmNotasActionPerformed
       escritorio.removeAll();
       escritorio.repaint();
-      CargaNotas notas = new CargaNotas();
+      VistaCargaNotas notas = new VistaCargaNotas();
       notas.setVisible(true);
       escritorio.add(notas);
       escritorio.moveToFront(notas);
@@ -202,7 +202,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jmAlumnosMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAlumnosMateriaActionPerformed
       escritorio.removeAll();
       escritorio.repaint();
-      ConsultaAlumnosMateria consulta = new ConsultaAlumnosMateria();
+      VistaListarInscripciones consulta = new VistaListarInscripciones();
       consulta.setVisible(true);
       escritorio.add(consulta);
       escritorio.moveToFront(consulta);

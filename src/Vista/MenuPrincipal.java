@@ -98,6 +98,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuAdministracion.add(jmInscripciones);
 
         jmNotas.setText("Manipulacion de notas");
+        jmNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmNotasActionPerformed(evt);
+            }
+        });
         jMenuAdministracion.add(jmNotas);
 
         jMenuBar2.add(jMenuAdministracion);
@@ -105,6 +110,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu9.setText("Consultas");
 
         jmAlumnosMateria.setText("Alumnos por materia");
+        jmAlumnosMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmAlumnosMateriaActionPerformed(evt);
+            }
+        });
         jMenu9.add(jmAlumnosMateria);
 
         jMenuBar2.add(jMenu9);
@@ -179,6 +189,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jmInscripcionesActionPerformed
+
+    private void jmNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmNotasActionPerformed
+      escritorio.removeAll();
+      escritorio.repaint();
+      CargaNotas notas = new CargaNotas();
+      notas.setVisible(true);
+      escritorio.add(notas);
+      escritorio.moveToFront(notas);
+    }//GEN-LAST:event_jmNotasActionPerformed
+
+    private void jmAlumnosMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAlumnosMateriaActionPerformed
+      escritorio.removeAll();
+      escritorio.repaint();
+      ConsultaAlumnosMateria consulta = new ConsultaAlumnosMateria();
+      consulta.setVisible(true);
+      escritorio.add(consulta);
+      escritorio.moveToFront(consulta);
+    }//GEN-LAST:event_jmAlumnosMateriaActionPerformed
 
     
     

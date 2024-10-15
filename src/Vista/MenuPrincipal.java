@@ -90,6 +90,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuAdministracion.setText("Administracion");
 
         jmInscripciones.setText("Manejo de inscripciones");
+        jmInscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmInscripcionesActionPerformed(evt);
+            }
+        });
         jMenuAdministracion.add(jmInscripciones);
 
         jmNotas.setText("Manipulacion de notas");
@@ -161,6 +166,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
        this.dispose();
     }//GEN-LAST:event_jmSalirActionPerformed
+
+    
+    /*Formulario de Inscripcion */
+    private void jmInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmInscripcionesActionPerformed
+      escritorio.removeAll();
+      escritorio.repaint();
+      VistaInscripcion vi = new VistaInscripcion();
+      vi.setVisible(true);
+      escritorio.add(vi);
+      escritorio.moveToFront(vi);
+        
+        
+    }//GEN-LAST:event_jmInscripcionesActionPerformed
 
     
     
